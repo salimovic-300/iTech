@@ -49,6 +49,9 @@ route::get('/Web3_blockchain',function(){
 route::get('/freemium',function(){
     return view ('freemiumpub.index');
 })->name('freemium');
+route::get('/education',function(){
+    return view ('education.index');
+})->name('freemium');
 Route::get('/about', function () {
     return view('front.about');
 });

@@ -43,6 +43,12 @@
                 <p class="text-gray-600 mb-6">Profitez gratuitement avec des options premium et des annonces ciblées.</p>
                 <a href="{{ route('freemium') }}" class="inline-block bg-gradient-to-r from-pink-500 to-pink-600 text-white px-6 py-3 rounded-full hover:from-pink-600 hover:to-pink-700 transition-all duration-300">En savoir plus</a>
             </div>
+            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 hover:border-pink-200">
+                <img src="{{ asset('storage/photo/education.jpg') }}" alt="educ et formation en ligne" class="mx-auto mb-6 rounded-lg w-full h-48 object-cover">
+                <h4 class="text-2xl font-bold mb-4 text-gray-900">Education et formation en ligne</h4>
+                <p class="text-gray-600 mb-6">Formation personnalisée : Une section éducative utilisant l'IA pour proposer des cours personnalisés dans des domaines comme l’IA, le développement Web, ou la finance.</p>
+                <a href="{{ route('freemium') }}" class="inline-block bg-gradient-to-r from-pink-500 to-pink-600 text-white px-6 py-3 rounded-full hover:from-pink-600 hover:to-pink-700 transition-all duration-300">En savoir plus</a>
+            </div>
         </div>
     </div>
 </div>

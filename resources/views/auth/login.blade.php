@@ -1,39 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+@extends('layouts.app')
 
-</head>
-<body>
-    <div class="container mt-5">
-        <img src="/storage/photo/logo1.png" alt="Avatar Logo" style="width:80px;" class="rounded-pill"> 
-        <h1 class="text-center">Connexion</h1>
-    @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+@section('title', 'login')
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-        <div>
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" value="{{ old('email') }}" required>
-        </div>
-        <div>
-            <label for="password">Mot de passe :</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button type="submit">Se connecter</button>
-    </form>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+@section('content')
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+<body class="flex items-center justify-center min-h-screen">
+    <div class="form-container w-full max-w-md">
+        <!-- Titre -->
+        <h1 class="text-3xl font-bold text-center mb-6">Connexion</h1>
 
+        <!-- Affichage des erreurs -->
+        @if ($errors->any())
+            <div class="bg-red-100 text-red-600 p-4 rounded-lg mb-6">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <!-- Formulaire de connexion -->
+        <form method="POST" action="{{ route('login') }}" class="space-y-6">
+            @csrf
+            <!-- Champ Email -->
+            <div>
+                <label for="email" class="block text-sm font-medium mb-2">Email :</label>
+                <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control w-full p-3 rounded-lg" placeholder="Entrez votre email" required>
+            </div>
+
+            <!-- Champ Mot de passe -->
+            <div>
+                <label for="password" class="block text-sm font-medium mb-2">Mot de passe :</label>
+                <input type="password" id="password" name="password" class="form-control w-full p-3 rounded-lg" placeholder="Entrez votre mot de passe" required>
+            </div>
+
+            <!-- Bouton de connexion -->
+            <div>
+                <button type="submit" class="btn-primary w-full p-3 rounded-lg text-blue font-semibold">
+                    Se connecter
+                </button>
+            </div>
+        </form>
+
+        <!-- Lien de retour à l'accueil -->
+        <div class="mt-6 text-center">
+            <a href="/" class="text-blue-500 hover:text-blue-600 transition duration-300">
+                ← Retour à l'accueil
+            </a>
+        </div>
+    </div>
 </body>
-</html>
+@endsection

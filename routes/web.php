@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\EcommerceController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Web3Controller;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Route;
 use OpenAI\Client;
@@ -44,11 +46,19 @@ route::get('/e-commerce_intelligent',function(){
 route::get('/Web3_blockchain',function(){
     return view ('front.Web3_blockchain');
 })->name('Web3_blockchain');
+route::get('/freemium',function(){
+    return view ('freemiumpub.index');
+})->name('freemium');
+Route::get('/about', function () {
+    return view('front.about');
+});
 Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
 
 
 
+Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
 
+Route::get('/web3', [Web3Controller::class, 'index']);
 
 
 require __DIR__.'/auth.php';

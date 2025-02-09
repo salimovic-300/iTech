@@ -1,46 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-5">
-        <img src="/storage/photo/logo1.png" alt="Avatar Logo" style="width:80px;" class="rounded-pill"> 
+@extends('layouts.app')
 
-        <h2 class="text-center">Créer un compte</h2>
-        <form method="POST" action="{{ route('register') }}" class="mt-4">
+@section('title', 'Register')
+
+@section('content')
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+<body class="flex items-center justify-center min-h-screen">
+    <div class="form-container w-full max-w-md">
+        <h2 class="text-3xl font-bold text-center mb-6">Créer un compte</h2>
+        <form method="POST" action="{{ route('register') }}" class="space-y-6">
             @csrf
-            <div class="mb-3">
-                <label for="name" class="form-label">Nom</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required>
+            <!-- Champ Nom -->
+            <div>
+                <label for="name" class="block text-sm font-medium mb-2">Nom</label>
+                <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control w-full p-3 rounded-lg @error('name') border-red-500 @enderror" required>
                 @error('name')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    <div class="invalid-feedback text-sm text-red-600 mt-2">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required>
+
+            <!-- Champ Email -->
+            <div>
+                <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control w-full p-3 rounded-lg @error('email') border-red-500 @enderror" required>
                 @error('email')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    <div class="invalid-feedback text-sm text-red-600 mt-2">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Mot de passe</label>
-                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required>
+
+            <!-- Champ Mot de passe -->
+            <div>
+                <label for="password" class="block text-sm font-medium mb-2">Mot de passe</label>
+                <input type="password" id="password" name="password" class="form-control w-full p-3 rounded-lg @error('password') border-red-500 @enderror" required>
                 @error('password')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    <div class="invalid-feedback text-sm text-red-600 mt-2">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="mb-3">
-                <label for="password_confirmation" class="form-label">Confirmez le mot de passe</label>
-                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+
+            <!-- Champ Confirmation du mot de passe -->
+            <div>
+                <label for="password_confirmation" class="block text-sm font-medium mb-2">Confirmez le mot de passe</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control w-full p-3 rounded-lg" required>
             </div>
-            <button type="submit" class="btn btn-primary w-100">S'inscrire</button>
+
+            <!-- Bouton d'inscription -->
+            <div>
+                <button type="submit" class="btn-primary w-full p-3 rounded-lg text-blue font-semibold">
+                    S'inscrire
+                </button>
+            </div>
+
+            <!-- Bouton de retour à l'accueil -->
+            <div>
+                <a href="/" class="btn-secondary w-full p-3 rounded-lg text-black font-semibold text-center block">
+                    Retour à l'accueil
+                </a>
+            </div>
         </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
+@endsection

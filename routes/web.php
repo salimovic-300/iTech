@@ -51,7 +51,7 @@ route::get('/freemium',function(){
 })->name('freemium');
 route::get('/education',function(){
     return view ('education.index');
-})->name('freemium');
+})->name('education');
 Route::get('/about', function () {
     return view('front.about');
 });
